@@ -69,10 +69,10 @@ export function ContactClient() {
               <p style={{ margin: '0 0 6px', color: 'var(--dim,#9a93a8)', lineHeight: 1.65, fontSize: '1.02rem' }}>Drop a message, or reach me directly.</p>
               <div style={{ marginTop: 6, borderTop: '1px solid var(--line,rgba(255,255,255,0.1))' }}>
                 {CONTACTS.map(c => (
-                  <a key={c.label} href={c.url} target={c.target} className="contact-row" style={{ textDecoration: 'none', display: 'flex', alignItems: 'baseline', gap: 16, padding: '18px 2px', borderBottom: '1px solid var(--line,rgba(255,255,255,0.1))' }}>
-                    <span style={{ flexShrink: 0, width: 74, fontFamily: "'JetBrains Mono',monospace", fontSize: 11, letterSpacing: '0.12em', color: 'var(--accent,#ae42a5)' }}>{c.label}</span>
-                    <span style={{ flex: 1, minWidth: 0, fontFamily: "'Space Grotesk',sans-serif", fontWeight: 600, fontSize: 'clamp(1.02rem,2.2vw,1.22rem)', color: 'var(--text,#ece8f0)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{c.value}</span>
-                    <span style={{ flexShrink: 0, fontSize: 15, color: 'var(--dim,#9a93a8)' }}>{c.arrow}</span>
+                  <a key={c.label} href={c.url} target={c.target} className="contact-row" style={{ textDecoration: 'none', display: 'flex', alignItems: 'flex-start', gap: 16, padding: '18px 2px', borderBottom: '1px solid var(--line,rgba(255,255,255,0.1))' }}>
+                    <span style={{ flexShrink: 0, width: 74, fontFamily: "'JetBrains Mono',monospace", fontSize: 11, letterSpacing: '0.12em', color: 'var(--accent,#ae42a5)', paddingTop: 2 }}>{c.label}</span>
+                    <span style={{ flex: 1, minWidth: 0, fontFamily: "'Space Grotesk',sans-serif", fontWeight: 600, fontSize: 'clamp(0.9rem,3.8vw,1.22rem)', color: 'var(--text,#ece8f0)', wordBreak: 'break-all' }}>{c.value}</span>
+                    <span style={{ flexShrink: 0, fontSize: 15, color: 'var(--dim,#9a93a8)', paddingTop: 2 }}>{c.arrow}</span>
                   </a>
                 ))}
               </div>
@@ -108,7 +108,7 @@ export function ContactClient() {
                     />
                   </label>
                   {err && <span style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: 12, color: '#ff7a7a' }}>{err}</span>}
-                  <button onClick={send} disabled={loading} className="btn-primary" style={{ marginTop: 4, border: 0, padding: '15px 20px', borderRadius: 12, fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 15, background: 'var(--accent,#ae42a5)', color: 'var(--on-accent,#0b0710)', boxShadow: '0 14px 40px -16px var(--accent,#ae42a5)', cursor: loading ? 'wait' : 'pointer', opacity: loading ? 0.7 : 1 }}>
+                  <button onClick={send} disabled={loading} className="btn-primary" style={{ marginTop: 4, border: 0, padding: '15px 20px', borderRadius: 12, fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 15, background: 'var(--accent,#ae42a5)', color: 'var(--on-accent,#0b0710)', boxShadow: '0 14px 40px -16px var(--accent,#ae42a5)', cursor: loading ? 'wait' : 'pointer', opacity: loading ? 0.7 : 1, width: '100%' }}>
                     {loading ? 'Sending…' : 'Send message →'}
                   </button>
                   <span style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: 10.5, color: 'var(--dim,#9a93a8)', lineHeight: 1.5, opacity: 0.8 }}>I&apos;ll get back to you as soon as possible.</span>
