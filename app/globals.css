@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+/* ===== THEME CSS VARIABLES ===== */
+:root {
+  --accent: #ae42a5;
+  --accent-strong: rgb(215, 161, 210);
+  --bg: #0b0710;
+  --bg2: #0f0a17;
+  --panel: rgba(255, 255, 255, 0.035);
+  --panel2: rgba(255, 255, 255, 0.06);
+  --text: #ece8f0;
+  --dim: #9a93a8;
+  --line: rgba(255, 255, 255, 0.09);
+  --on-accent: #0b0710;
+  --nav-bg: rgba(11, 7, 16, 0.55);
+  --term-bg: rgba(0, 0, 0, 0.32);
+}
+
+html[data-theme="light"] {
+  --accent: #ae42a5;
+  --accent-strong: #ae42a5;
+  --bg: #f1edf7;
+  --bg2: #e9e2f4;
+  --panel: rgba(46, 30, 70, 0.045);
+  --panel2: rgba(46, 30, 70, 0.07);
+  --text: #1b1526;
+  --dim: #5f5872;
+  --line: rgba(27, 21, 38, 0.12);
+  --on-accent: #ffffff;
+  --nav-bg: rgba(241, 237, 247, 0.6);
+  --term-bg: rgba(255, 255, 255, 0.55);
+}
+
+/* ===== GLOBAL RESETS ===== */
+*, *::before, *::after { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+html { min-height: 100%; background: #0b0710; }
+body { margin: 0; padding: 0; background: var(--bg); color: var(--text); transition: background 0.55s ease, color 0.55s ease; cursor: var(--cur, auto); }
+::selection { background: rgba(157, 123, 255, 0.35); }
+a, button, [role="button"], summary { cursor: var(--curp, pointer) !important; }
+input, textarea, [contenteditable] { cursor: text !important; }
+input::placeholder, textarea::placeholder { color: var(--dim, #9a93a8); opacity: 0.7; }
+
+/* ===== KEYFRAMES ===== */
+@keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+@keyframes floatA { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(60px, -40px) scale(1.12); } }
+@keyframes floatB { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(-70px, 50px) scale(1.18); } }
+@keyframes riseIn { from { opacity: 0; transform: translateY(46px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes popIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+@keyframes wkpulse { 0%, 100% { transform: scale(1); opacity: .85; } 50% { transform: scale(1.08); opacity: 1; } }
+
+/* ===== THIN SCROLLBAR ===== */
+.thin-scroll::-webkit-scrollbar { width: 6px; height: 6px; }
+.thin-scroll::-webkit-scrollbar-thumb { background: rgba(150, 140, 170, 0.45); border-radius: 4px; }
+.thin-scroll::-webkit-scrollbar-track { background: transparent; }
+.thin-scroll { scrollbar-width: thin; scrollbar-color: rgba(150, 140, 170, 0.45) transparent; }
+
+/* inside live browser frame — reset to normal cursors */
+.browser-frame { cursor: auto !important; }
+.browser-frame a, .browser-frame button, .browser-frame [role="button"] { cursor: pointer !important; }
+.browser-frame input, .browser-frame textarea { cursor: text !important; }
+
+/* ===== DEVICE FRAMES ===== */
+.device { width: 100%; display: flex; flex-direction: column; align-items: center; }
+
+/* LAPTOP */
+.device.laptop { padding: 0 8px; }
+.device.laptop .device-lid { width: 100%; background: #070708; border: 2px solid #2e2f34; border-bottom: none; border-radius: 14px 14px 3px 3px; padding: 10px 10px 9px; box-shadow: 0 55px 120px -55px rgba(0,0,0,0.85), inset 0 0 0 1px rgba(255,255,255,0.04); }
+.device.laptop .laptop-cam { width: 5px; height: 5px; border-radius: 50%; background: #26262b; margin: 0 auto 8px; box-shadow: 0 0 0 2px #0b0b0d; }
+.device.laptop .phone-island { display: none; }
+.device.laptop .browser-frame { border-radius: 6px; border: 1px solid rgba(255,255,255,0.06); }
+.device.laptop .device-base { position: relative; width: 108%; height: 15px; background: linear-gradient(180deg, #e4e5e9 0%, #cfd0d6 38%, #b0b1ba 78%, #9a9ba4 100%); border-radius: 0 0 11px 11px; box-shadow: 0 26px 38px -18px rgba(0,0,0,0.6); }
+.device.laptop .device-base::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(#141417, #34343b); }
+.device.laptop .device-base::after { content: ''; position: absolute; top: 3px; left: 50%; transform: translateX(-50%); width: 104px; height: 7px; background: linear-gradient(#b4b5bd, #d2d3d9); border-radius: 0 0 8px 8px; box-shadow: inset 0 1px 2px rgba(0,0,0,0.22); }
+
+/* PHONE */
+.device.phone { max-width: 380px; margin: 0 auto; position: relative; }
+.device.phone::before { content: ''; position: absolute; right: -3px; top: 158px; width: 3px; height: 64px; background: #0c0910; border-radius: 0 2px 2px 0; }
+.device.phone::after { content: ''; position: absolute; left: -3px; top: 120px; width: 3px; height: 40px; background: #0c0910; border-radius: 2px 0 0 2px; box-shadow: 0 54px 0 #0c0910; }
+.device.phone .device-lid { width: 100%; position: relative; background: #050409; border: 13px solid #14111a; border-radius: 52px; padding: 42px 0 16px; overflow: hidden; box-shadow: 0 55px 95px -45px rgba(0,0,0,0.85), inset 0 0 0 2px rgba(255,255,255,0.05), inset 0 0 0 14px #050409; }
+.device.phone .laptop-cam { display: none; }
+.device.phone .phone-island { position: absolute; top: 16px; left: 50%; transform: translateX(-50%); width: 100px; height: 28px; background: #000; border-radius: 16px; z-index: 8; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06); }
+.device.phone .phone-island::after { content: ''; position: absolute; right: 10px; top: 50%; transform: translateY(-50%); width: 9px; height: 9px; border-radius: 50%; background: #0b0c16; box-shadow: inset 0 0 2px rgba(120,140,200,0.55); }
+.device.phone .device-base { display: none; }
+.device.phone .browser-frame { border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); }
+.device.phone .device-lid::after { content: ''; position: absolute; bottom: 7px; left: 50%; transform: translateX(-50%); width: 118px; height: 5px; border-radius: 3px; background: rgba(255,255,255,0.5); z-index: 8; }
+
+/* ===== HOVER UTILITIES ===== */
+.panel-card { transition: border-color .25s; }
+.panel-card:hover { border-color: var(--accent) !important; }
+.btn-primary { transition: transform .2s; }
+.btn-primary:hover { transform: translateY(-2px); }
+.btn-outline { transition: border-color .2s; }
+.btn-outline:hover { border-color: var(--accent) !important; }
+.contact-row { transition: padding-left .2s; }
+.contact-row:hover { padding-left: 8px !important; }
+.leaf-circle { transition: all .2s; }
+.leaf-circle:hover { border-color: var(--accent) !important; transform: translateY(-3px); box-shadow: 0 10px 24px -10px var(--accent); }
