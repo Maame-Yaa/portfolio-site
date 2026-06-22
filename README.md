@@ -11,7 +11,7 @@ Personal portfolio site built with Next.js 16, TypeScript, and Tailwind CSS v4.
 - **Work** — experience timeline and a project browser with live embeds, screenshots, and walkthroughs inside device frames
 - **Contact** — direct links and a contact form that sends email via the API route
 
-## Stack
+## Built With
 
 - **Framework** — Next.js 16 (App Router)
 - **Language** — TypeScript
@@ -19,6 +19,8 @@ Personal portfolio site built with Next.js 16, TypeScript, and Tailwind CSS v4.
 - **Fonts** — Space Grotesk, Manrope, JetBrains Mono (Google Fonts)
 - **Email** — nodemailer via `/api/contact`
 - **Deployment** — Vercel
+- **Designed in** — Claude Design
+- **Built with** — Claude Code
 
 ## Features
 
