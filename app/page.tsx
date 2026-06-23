@@ -66,7 +66,6 @@ function skillLogo(name: string, theme: string) {
 
 // ─── Experience tree ──────────────────────────────────────────────────────────
 function ExpTree({ narrow, theme }: { narrow: boolean; theme: string }) {
-  const dotCommon = `width:16px;height:16px;border-radius:50%;border:3px solid var(--bg,#0b0710);box-shadow:0 0 0 1px var(--accent,#ae42a5);top:6px;z-index:2;`
   const spineStyle: React.CSSProperties = narrow
     ? { position: 'absolute', left: 8, top: 6, bottom: 6, width: 2, background: 'linear-gradient(var(--accent,#ae42a5),var(--line,rgba(255,255,255,0.14)))' }
     : { position: 'absolute', left: '50%', transform: 'translateX(-50%)', top: 6, bottom: 6, width: 2, background: 'linear-gradient(var(--accent,#ae42a5),var(--line,rgba(255,255,255,0.14)))' }
@@ -87,7 +86,6 @@ function ExpTree({ narrow, theme }: { narrow: boolean; theme: string }) {
             : left
               ? { position: 'absolute', right: -30, top: 16, width: 30, height: 2, background: 'var(--line,rgba(255,255,255,0.2))' }
               : { position: 'absolute', left: -30, top: 16, width: 30, height: 2, background: 'var(--line,rgba(255,255,255,0.2))' }
-          void dotCommon
           return (
             <div key={i} style={{ position: 'relative', display: 'flex', justifyContent: justify as 'flex-start' | 'flex-end' }}>
               <span style={dotStyle} />
