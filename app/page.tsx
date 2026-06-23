@@ -140,25 +140,6 @@ export default function HomePage() {
   const { theme } = useTheme()
   const tw = useTypewriter(TYPEWRITER_PHRASES)
 
-  // Loading screen
-  const [loading,  setLoading]  = useState(false)
-  const [progress, setProgress] = useState(0)
-  useEffect(() => {
-    try { if (sessionStorage.getItem('myt-loaded')) return } catch {}
-    setLoading(true)
-    const start = Date.now(), dur = 2200
-    const id = setInterval(() => {
-      const p = Math.min(1, (Date.now() - start) / dur)
-      setProgress(Math.round((1 - Math.pow(1 - p, 2.3)) * 100))
-      if (p >= 1) {
-        clearInterval(id)
-        try { sessionStorage.setItem('myt-loaded', '1') } catch {}
-        setTimeout(() => setLoading(false), 420)
-      }
-    }, 32)
-    return () => clearInterval(id)
-  }, [])
-
   // Skills tab
   const [skillTab, setSkillTab] = useState('All')
 
@@ -200,25 +181,6 @@ export default function HomePage() {
 
   return (
     <div style={{ position: 'relative', minHeight: '100vh', overflowX: 'hidden', fontFamily: "'Manrope',sans-serif", transition: 'background .55s ease,color .55s ease' }}>
-
-      {/* ── Loading screen ── */}
-      {loading && (
-        <div style={{ position: 'fixed', inset: 0, zIndex: 120, background: '#0b0710', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 30, padding: 24 }}>
-          <div style={{ position: 'absolute', top: '-20%', left: '50%', transform: 'translateX(-50%)', width: '60vw', height: '60vw', borderRadius: '50%', background: 'radial-gradient(circle,#ae42a5 0%,transparent 65%)', opacity: 0.18, filter: 'blur(40px)' }} />
-          <div style={{ textAlign: 'center', lineHeight: 0.92, position: 'relative' }}>
-            <div style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, letterSpacing: '-0.03em', fontSize: 'clamp(2.4rem,8vw,5.2rem)', color: '#f3f0f7', animation: 'riseIn .8s cubic-bezier(.2,.8,.2,1) both' }}>Maame Yaa</div>
-            <div style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, letterSpacing: '-0.03em', fontSize: 'clamp(2.4rem,8vw,5.2rem)', background: 'linear-gradient(120deg,#ae42a5,#e7a0db)', WebkitBackgroundClip: 'text', backgroundClip: 'text', WebkitTextFillColor: 'transparent', animation: 'riseIn .8s cubic-bezier(.2,.8,.2,1) .12s both' }}>Twumasi</div>
-          </div>
-          <div style={{ width: 'min(340px,72vw)' }}>
-            <div style={{ height: 2, width: '100%', background: 'rgba(255,255,255,0.1)', borderRadius: 2, overflow: 'hidden' }}>
-              <div style={{ height: '100%', width: `${progress}%`, background: 'linear-gradient(90deg,#ae42a5,#e7a0db)', transition: 'width .12s linear' }} />
-            </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 12, fontFamily: "'JetBrains Mono',monospace", fontSize: 11, letterSpacing: '0.2em', color: '#7e7790' }}>
-              <span>FULL STACK SOFTWARE ENGINEER</span><span>{progress}%</span>
-            </div>
-          </div>
-        </div>
-      )}
 
       <main id="top" style={{ position: 'relative', zIndex: 2 }}>
 
